@@ -1,0 +1,95 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.nav-Link{
+  padding: 2px 12px;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
+
+.nav-Link:hover{
+  color: grey;
+}
+
+.nav-Link:focus{
+  font-weight: 800;
+}
+
+img.nav-logo{
+  height: 40px;
+  width: 120px;
+  filter: contrast(1.5);
+}
+
+.emp-profile img{
+  height: 200px;
+  width: 170px;
+  border-radius: 2px;
+  box-shadow: 2px 2px 4px #000000;
+}
+
+.profile-edit-btn{
+  border-radius: 4px;
+  background-color: #a3a3a360;
+  color: blue;
+}
+
+.profile-edit-btn:hover{
+  font-weight: 500;
+}
+
+.nav-link{
+  color : black;
+  background-color: blue;
+  font-weight: 600;
+  font-size: large;
+}
+
+.error-template{
+  padding: 40px 15px;
+  text-align: center;
+}
+.error-actions{
+  margin-top:15px;
+  margin-bottom:15px;
+}
+.error-actions .btn{ 
+  margin-right:10px; 
+}
