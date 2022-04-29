@@ -92,7 +92,7 @@ router.post("/signin", async (req, res) => {
       const passMatch = await bcrypt.compare(password, userLogin.password);
 
       token = await userLogin.generateAuthToken();
-      console.log(token);
+      // console.log(token);
       res.cookie("jwtoken", token, {
         expires: new Date(Date.now() + 25892000000),
         httpOnly: true,
@@ -100,13 +100,11 @@ router.post("/signin", async (req, res) => {
       // console.log(userLogin.name);
       if (passMatch) {
         const { _id, name, email } = userLogin;
-        res
-          .status(201)
-          .json({
-            token,
-            userLogin: { _id, email, name },
-            message: "User Signin Successfull!",
-          });
+        res.status(201).json({
+          token,
+          userLogin: { _id, email, name },
+          message: "User Signin Successfull!",
+        });
       } else return res.status(400).json({ error: "Invaid Credentials!" });
     } else return res.status(400).json({ error: "Invaid Credentials!" });
   } catch (err) {
@@ -116,8 +114,9 @@ router.post("/signin", async (req, res) => {
 
 //about us page
 router.get("/about", authenticate, (req, res) => {
-  res.send(`This is about my project`);
-  res.send(req.rootUser);
+  // res.send(`This is about my project`);
+  // console.log(req.rootUser);
+  res.status(200).json(req.rootUser);
 });
 
 module.exports = router;
