@@ -102,8 +102,7 @@ router.post("/signin", async (req, res) => {
         const { _id, name, email } = userLogin;
         res.status(201).json({
           token,
-          userLogin: { _id, email, name },
-          message: "User Signin Successfull!",
+          user: { _id, email, name },
         });
       } else return res.status(400).json({ error: "Invaid Credentials!" });
     } else return res.status(400).json({ error: "Invaid Credentials!" });
@@ -114,7 +113,6 @@ router.post("/signin", async (req, res) => {
 
 //about us page
 router.get("/about", authenticate, (req, res) => {
-  // res.send(`This is about my project`);
   // console.log(req.rootUser);
   res.status(200).json(req.rootUser);
 });

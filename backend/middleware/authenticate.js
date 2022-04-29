@@ -7,18 +7,22 @@ app.use(cookieParser());
 
 const authenticate = async (req, res, next) => {
   try {
-    // console.log("Cookies: ", req.headers.cookie);
-    console.log(req.headers.Authorization);
-    const tokenStr = JSON.stringify(req.headers.cookie);
-    const token = tokenStr.slice(9, -1);
-    // console.log(token);
+    // // console.log("Cookies: ", req.headers.cookie);
+    // console.log(req.headers.Authorization);
+    // const tokenStr = JSON.stringify(req.headers.cookie);
+    // const token = tokenStr.slice(9, -1);
+    // // console.log(token);
 
+    const { authorization } = req.headers;
+    if (!authorization) {
+      return res.json({ error: "You must be logged in!" });
+    }
+    const token = authorization.replace("Bearer ", "");
     const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
     const rootUser = await User.findOne({
       _id: verifyToken._id,
       "tokens.token": token,
     });
-    // console.log(rootUser);
     if (!rootUser) throw new Error("User not Found!");
 
     req.token = token;

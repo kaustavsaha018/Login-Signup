@@ -22,9 +22,7 @@ const About = () => {
     try {
       const { data } = await axios.get("http://localhost:5000/about", {
         headers: {
-          Authorization: `${token}`,
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
         },
       });
       console.log(data);

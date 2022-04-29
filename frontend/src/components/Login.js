@@ -6,6 +6,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const { state, dispatch } = useContext(UserContext);
 
   const loginUser = async (e) => {
     e.preventDefault();
@@ -18,7 +19,8 @@ const Login = () => {
         console.log(response.data);
         window.alert("Login Successful!");
         // console.log("Login Successful!");
-        localStorage.setItem("userInfo", JSON.stringify(response.data));
+        localStorage.setItem("jwt", response.data.token);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
         navigate("/");
       })
       .catch(function (error) {
